@@ -1,0 +1,1593 @@
+
+The polymath blog
+July 12, 2012
+Minipolymath4 project: IMO 2012 Q3
+Filed under: research — Terence Tao @ 10:00 pm
+Tags: mini-polymath4
+
+This post marks the official opening of the mini-polymath4 project to solve a problem from the 2012 IMO.  This time, I have selected Q3, which has an interesting game-theoretic flavour to it.
+
+    Problem 3.   The liar’s guessing game is a game played between two players A and B.  The rules of the game depend on two positive integers k and n which are known to both players.
+
+    At the start of the game, A chooses two integers x and N with 1 \leq x \leq N.  Player A keeps x secret, and truthfully tells N to player B.  Player B now tries to obtain information about x by asking player A questions as follows.  Each question consists of B specifying an arbitrary set S of positive integers (possibly one specified in a previous question), and asking A whether x belongs to S.  Player B may ask as many such questions as he wishes.  After each question, player A must immediately answer it with yes or no, but is allowed to lie as many times as she wishes; the only restriction is that, among any k+1 consecutive answers, at least one answer must be truthful.
+
+    After B has asked as many questions as he wants, he must specify a set X of at most n positive integers.  If x belongs to X, then B wins; otherwise, he loses.  Prove that:
+
+        If n \geq 2^k, then B can guarantee a win.
+        For all sufficiently large k, there exists an integer n \geq 1.99^k such that B cannot guarantee a win.
+
+The comments to this post shall serve as the research thread for the project, in which participants are encouraged to post their thoughts and comments on the problem, even if (or especially if) they are only partially conclusive.  Participants are also encouraged to visit the discussion thread for this project, and also to visit and work on the wiki page to organise the progress made so far.
+This project will follow the general polymath rules.  In particular:
+
+    All are welcome. Everyone (regardless of mathematical level) is welcome to participate.  Even very simple or “obvious” comments, or comments that help clarify a previous observation, can be valuable.
+    No spoilers! It is inevitable that solutions to this problem will become available on the internet very shortly.  If you are intending to participate in this project, I ask that you refrain from looking up these solutions, and that those of you have already seen a solution to the problem refrain from giving out spoilers, until at least one solution has already been obtained organically from the project.
+    Not a race. This is not intended to be a race between individuals; the purpose of the polymath experiment is to solve problems collaboratively rather than individually, by proceeding via a multitude of small observations and steps shared between all participants.   If you find yourself tempted to work out the entire problem by yourself in isolation, I would request that you refrain from revealing any solutions you obtain in this manner until after the main project has reached at least one solution on its own.
+    Update the wiki. Once the number of comments here becomes too large to easily digest at once, participants are encouraged to work on the wiki page to summarise the progress made so far, to help others get up to speed on the status of the project.
+    Metacomments go in the discussion thread. Any non-research discussions regarding the project (e.g. organisational suggestions, or commentary on the current progress) should be made at the discussion thread.
+    Be polite and constructive, and make your comments as easy to understand as possible. Bear in mind that the mathematical level and background of participants may vary widely.
+
+Have fun!
+Related
+
+(Research Thread III) Determinstic way to find primesIn "finding primes"
+
+Minipolymath4 project, second research threadIn "polymath proposals"
+
+Polymath6: improving the bounds for Roth's theoremIn "polymath proposals"
+Comments (87)	
+87 Comments
+
+    [...] just opened the research thread for the mini-polymath4 project over at the polymath blog to collaboratively solve one of the six [...]
+     
+    1
+     
+    1
+     
+    Rate This
+
+    1 Pingback by Mini-polymath4 discussion thread « What’s new — July 12, 2012 @ 10:01 pm
+
+    Obvious observations:
+
+    It seems for part 1 we have to provide a strategy for B to always win and for part 2 to give a strategy for A to win at least sometime. But it is not clear if A can ALWAYS win in case 2, finding a counter example would be a good first step
+     
+    0
+     
+    1
+     
+    Rate This
+
+    2 Comment by Bob — July 12, 2012 @ 10:11 pm
+
+    The fact that player A has to choose the number N at the beginning of the game is intriguing. The number of possibilities for x is originally N, so it would seem like large N would make the game harder for B. I suspect that B can counteract the difficulty by asking many more questions for large N than small N.
+     
+    0
+     
+    0
+     
+    Rate This
+
+    3 Comment by Mihai Nica — July 12, 2012 @ 10:17 pm
+
+    Are there any results from Ramsey theory or related which might be useful for part one?
+     
+    0
+     
+    0
+     
+    Rate This
+
+    4 Comment by Jaakko — July 12, 2012 @ 10:19 pm
+
+    Obvious: If we choose sets S_p to be of the form “numbers less than N with a 1 in the pth place of their binary expansion,” then we can get at least 1/(k+1) of the binary digits of x by asking about the p’s in turn.
+     
+    2
+     
+    0
+     
+    Rate This
+
+    5 Comment by Jon — July 12, 2012 @ 10:22 pm
+
+        More generally, for any partition of some set of numbers into 2^(k+1) parts, one round of questioning allows to rule out one of the parts.
+         
+        2
+         
+        0
+         
+        Rate This
+
+        6 Comment by Vladimir Nesov — July 12, 2012 @ 10:34 pm
+
+            …hence, while we can partition N into 2^(k+1) non-empty parts, we can rule out something each round of k+1 questions. We can go on ruling out numbers until no more than 2^(k+1) possible answers remain. After that, we need to somehow cut that in half.
+             
+            2
+             
+            0
+             
+            Rate This
+
+           7  Comment by robotact — July 12, 2012 @ 10:48 pm
+
+    Could part 1 be proved inductively with respect to N?
+     
+    0
+     
+    0
+     
+    Rate This
+
+   8  Comment by Olli — July 12, 2012 @ 10:22 pm
+
+        It seems to me that if we could ask a series of questions to guarantee that x falls inside, say, [0, N/2], then we could reduce to a previous case, but once we find such a series of questions we more or less have solved the problem.
+         
+        0
+         
+        0
+         
+        Rate This
+
+       9  Comment by Jon — July 12, 2012 @ 10:24 pm
+
+            My idea was that since the solution is obvious if N is inside [1,n], then we could simply prove the case n+1 and the rest would follow inductively.
+             
+            0
+             
+            0
+             
+            Rate This
+
+           10 Comment by Olli — July 12, 2012 @ 10:27 pm
+
+        It suffices to prove it for N=n+1. See comment 12.
+         
+        0
+         
+        0
+         
+        Rate This
+
+       11 Comment by Kreiser — July 12, 2012 @ 10:44 pm
+
+    Since there is a possibility that B would win the game simply by guessing, there is no “always win” for A.
+     
+    4
+     
+    0
+     
+    Rate This
+
+    12 Comment by S — July 12, 2012 @ 10:25 pm
+
+        Good point, so it seems part 2 is somewhat harder than part 1. So it might be wise to completely focus on part 1 first.
+         
+        0
+         
+        0
+         
+        Rate This
+
+        13 Comment by Bob — July 12, 2012 @ 10:29 pm
+
+        I agree – this relates back to comment 2
+         
+        0
+         
+        0
+         
+        Rate This
+
+        14 Comment by Alison — July 12, 2012 @ 10:31 pm
+
+    Some observations. For the first part, proving for n=2^k suffices. The first approach that comes to my mind is to induct on k.
+     
+    2
+     
+    0
+     
+    Rate This
+
+   15  Comment by Marvis — July 12, 2012 @ 10:26 pm
+
+    B can as well ask questions in “rounds” of k+1 questions. Then, each round is guaranteed to have at least 1 correct answer.
+     
+    0
+     
+    0
+     
+    Rate This
+
+    16 Comment by robotact — July 12, 2012 @ 10:27 pm
+
+        While this is true, it is not very constructive. Player A can just answer about half truth and about half lies, making this strategy hard to implement.
+         
+        1
+         
+        0
+         
+        Rate This
+
+       17 Comment by Kreiser — July 12, 2012 @ 10:43 pm
+
+    So for k=0 any version of binary search works. The next step should be to find the strategy for k=1, n=2. I first thought I have found the strategy, but it doen’t work.
+     
+    0
+     
+    1
+     
+    Rate This
+
+  18  Comment by Florian — July 12, 2012 @ 10:29 pm
+
+        I am working on this case too. Here player A can never tell two lies in a row. Here is a little observation I have made. Let Q1, and Q2 be questions that player B can ask, and I will use the notation like:
+        Q’s: Q1 Q2 …
+        A’s: L T …
+        To denote that we asked Q1, then Q2 and we recieved a lie and a truth respectivly (of course, B doesnt know which).
+        Here is a cute little lemma:
+        Lemma: “If B asks Q1 Q2 Q1, then A must give the same answer for Q1 both times it is asked, or else tell the truth for Q2″
+        Proof: There are 5 possible ways A can answer. LTL, LTT, TLT, TTL, TTT. From here we see that if the answers to Q1 are different, then the only possibilities are LTT and TTL, in either case the answer to Q2 must be true. \box
+         
+        2
+         
+        0
+         
+        Rate This
+
+    19    Comment by Mihai Nica — July 12, 2012 @ 10:38 pm
+
+            Two more little lemmas:
+            Lemma: “If Player B asks the same question twice in a row and the answer is the same both times, then it must have been true both times”
+            Proof: True since k=1
+
+            Lemma: “Let Q1,Q2 be questions. If player B asks the sequence of questions Q1 Q2 Q1 Q1 and gets answers A1 A2 A3 A4 (each Ai is either an L (lie) or a T(truth)). Then player A is forced to reveal one of the following pieces of information to player B. (i.e. player B will know which of them is true.)
+            i) A2 = T
+            ii) A3 = A4 = T
+            iii) A2 = A4″
+            Proof: By the last lemma for the sequence of questions Q1 Q2 Q1, player B knows that either A2=T or the answers to the first three questions are LTL, TLT, or TTT. In the former case we have i), in the latter case we know that the possible answers for all four questions is LTLT, TLTT, TLTL, TTTL, or TTTT. If A3=A4 then player B knows that they are both truths so we have ii). If not then the possibilies are LTLT, TLTL which gives iii).
+             
+            1
+             
+            0
+             
+            Rate This
+
+         20   Comment by Mihai Nica — July 12, 2012 @ 10:59 pm
+
+                I think the second lemma can be used to make a binary seach by making Q1 = half the numbers, Q2= the other half of the numbers
+                 
+                0
+                 
+                0
+                 
+                Rate This
+
+             21   Comment by Mihai Nica — July 12, 2012 @ 11:06 pm
+
+                    The second lemma solved the case k=1, see comment 15.
+                     
+                    0
+                     
+                    0
+                     
+                    Rate This
+
+                 22   Comment by Olli — July 12, 2012 @ 11:35 pm
+
+    Here is an idea. Let’s first assume that N is a power of 2. Say N = 2^r. Suppose that r \geq k+1. Think of numbers from 1 to N as vertices of r-dimensional Boolean cube. Then let x_i\in\{0,1\} be the i-th coordinate of x. First, B asks if x_1 = 0 (formally, B gives set \{x:x_i = 0\}), then he asks if x_2 =0, and so on. Finally, he asks if x_{k+1} = 0. He gets “yes” and “no” answers. In other words, he gets b_1, \dots, b_{r+1} such that one of the statements “x_i = b_i” is true. Therefore, the first r+1 bits of x cannot be equal 1-b_1,1-b_2, \dots, 1-b_{r+1}. Thus B can exclude some values of x, and essentially reduces N. He proceeds until N \leq n. Then outputs the remaining numbers.
+     
+    3
+     
+    0
+     
+    Rate This
+
+   23 Comment by Yury — July 12, 2012 @ 10:35 pm
+
+        I thought about something similar, but it doesn’t seem to work since A could possibly answer the questions in a way so that no number gets excluded if N is not a power of 2.
+         
+        0
+         
+        0
+         
+        Rate This
+
+     24   Comment by Olli — July 12, 2012 @ 10:42 pm
+
+            If N is not a power of 2 but N > 2^{r+1}, B groups all numbers in 2^{r+1} non-empty clusters. The he labels each cluster, and all numbers in it, with a unique binary vector of length r+1. He then ask if the first bit of the label of x is 0; then if the second bit is 0, and so on. Finally, he finds a label L = (1 – b_1, …, 1 – b_{r+1}) such that x is not labeled with L. Now he can exclude all number with label B and iterate.
+             
+            1
+             
+            0
+             
+            Rate This
+
+           25 Comment by yurymakarychev — July 12, 2012 @ 10:50 pm
+
+            Without loss of generality N can be assumed to be very large (at least for the first problem) because smaller Ns only make life easier for B. But the problem is that you can only exclude one number which A can choose by answering appropriately.
+             
+            0
+             
+            0
+             
+            Rate This
+
+           26 Comment by Florian — July 12, 2012 @ 11:03 pm
+
+        You can assume that N = 2^k + 1, n = 2^k
+         
+        2
+         
+        0
+         
+        Rate This
+
+     27   Comment by gagika — July 12, 2012 @ 10:51 pm
+
+            In this case x will have at most k+1 binary digits, and the only case with k + 1 digits is (100…0), and all the combinations of k digits, how to exclude one number from there?
+             
+            0
+             
+            0
+             
+            Rate This
+
+         28   Comment by gagika — July 12, 2012 @ 11:11 pm
+
+                What we can do in this case is we keep asking if the first digit is 1, there are three possibilities,
+                k + 1 answers are YES, then the number is 10…0
+                k + 1 answers are NO, then we can exclude 10…0
+
+                Some answers are YES’s some NO’s, then we can choose the continent one, NO, and continue to ask for the other digits.
+                After we are done we can exclude a number whose first digit is 0 (because of the NO answer).
+                 
+                0
+                 
+                0
+                 
+                Rate This
+
+              29  Comment by gagika — July 12, 2012 @ 11:22 pm
+
+        The method will handle the case when N \geq 2^{k+1}, in that case you can just take any subset of size 2^{k+1} and numerate from 1, …, 2^{k+1}, then exclude from that set, but what to do when the range gets less than 2^{k+1} ?
+         
+        1
+         
+        0
+         
+        Rate This
+
+     30   Comment by gagika — July 12, 2012 @ 11:00 pm
+
+            You need to ask at least k + 1 questions to make a conclusion.
+             
+            0
+             
+            0
+             
+            Rate This
+
+         31   Comment by gagika — July 12, 2012 @ 11:01 pm
+
+    Reduction for part 1. (Assume all integers are from \{1,\cdots,N\}.)
+
+    For part 1, it suffices to produce a winning strategy for N=n+1. In other words, player B can win for all N iff he can win for N=n+1. \Rightarrow is trivial. \Leftarrow is as follows:
+
+    Go by induction. Suppose N>n+1 and a winning strategy is known for all n+1\leq N'< N. Partition N into n+1 nonempty sets G_1,\cdots,G_{n+1}. Then instead of asking "is it in S\subset \{1,\cdots,n+1\}", he asks "is it in \cup_{s\in S} G_s? By using the winning strategy for n+1, we can throw out one of the G_i and we now have a winning strategy by assumption.
+     
+    8
+     
+    0
+     
+    Rate This
+
+    32 Comment by Kreiser — July 12, 2012 @ 10:41 pm
+
+    Let’s say we get answer A_i for set S_i, for i = 1, \dots, k + 1, then if we take the complement of the answers then they can’t be true, but all of them being true corresponds an intersection of S_i‘s or its complement, and in the case intersection is non-empty we can exclude the intersection points from the range for x.
+     
+    2
+     
+    0
+     
+    Rate This
+
+  33  Comment by gagika — July 12, 2012 @ 10:42 pm
+
+    [...] Check out (and join in on) the discussion here. Share this:FacebookEmailTwitterLike this:LikeBe the first to like this. This entry was posted in Event, Math, On the Web, Something Extra and tagged Game On!, IMO, International Math Olympiad, mini-polymath, Polymath by U. of Oklahoma Math Club. Bookmark the permalink. [...]
+     
+    0
+     
+    2
+     
+    Rate This
+
+   34  Pingback by Minipolymath4 Project Now Open! | OU Math Club — July 12, 2012 @ 11:31 pm
+
+    Case k = 1: By comment 12, it suffices to show this when n = 2 and N = 3. Let Q1 and Q2 be the questions “is it in \{1, 2 \}” and “is it in \{2, 3\}“. Then after asking them in order Q1 Q2 Q1 Q1, we know by comment 10 either the thruth value of Q1 or Q2, in which case we are done, or using notation as in comment 10:
+
+    1) If A2 and A4 were both “yes” or “no”, then x = 2.
+    2) If one of A2 and A4 was “yes” and the other was “no”, then x \in \{ 1, 3\}.
+     
+    0
+     
+    0
+     
+    Rate This
+
+   35 Comment by Olli — July 12, 2012 @ 11:32 pm
+
+        This doesn’t quite seem correct. For instance, if x=1, then A can answer “yes” to all questions and only have to lie once.
+         
+        0
+         
+        0
+         
+        Rate This
+
+   36     Comment by Terence Tao — July 12, 2012 @ 11:38 pm
+
+            But if A answers “yes” to all questions, B knows that x must be either 1 or 2, because A cannot lie twice in a row.
+             
+            0
+             
+            0
+             
+            Rate This
+
+       37     Comment by Olli — July 12, 2012 @ 11:41 pm
+
+                Well, ok, but A can instead answer “yes yes yes no” and this seems consistent with all three possibilities x=1, x=2, x=3, so B has been unable to eliminate anything.
+                 
+                1
+                 
+                0
+                 
+                Rate This
+
+              38  Comment by Terence Tao — July 12, 2012 @ 11:52 pm
+
+                    Oh yes, true. My bad.
+                     
+                    0
+                     
+                    0
+                     
+                    Rate This
+
+                 39   Comment by Olli — July 12, 2012 @ 11:58 pm
+
+    We can assume N = 2^k + 1, n = 2^k.
+
+    It means that x has at most k + 1 binary digits (k+1 digits only for n = 2^k)
+    x = b_1 b_2\dots b_{k+1}
+
+    Then we can keep asking if b_1 is 1, there are two possibilities,
+
+    (a) k + 1 times we get the answer NO, then we exclude the number 10…0
+
+    (b) There is a YES answer. Then we stop asking about b_1 and ask b_2 = 1, b_3 = 1 … b_{k+1} = 1.
+    After we are done we can exclude the number for which all the last k + 1 asnwers would have been lies
+    whose first digit is 0 (because of the YES answer).
+     
+    5
+     
+    0
+     
+    Rate This
+
+   40 Comment by gagika — July 12, 2012 @ 11:43 pm
+
+        Another way (which seems to solve the first question). We ask the sequence of question Q_i: “Does b_i = 1?” in a row. That makes k+1 questions. Then we must have at least one of the digits right. In particular, let y = c_1 \dots c_{k+1} be such that c_i = 0 if the answer to A_i is Yes, and c_i=1 if the answer to A_i is No. Then x \neq y. We have excluded a possibility, which by the reduction of comment 15 is enough.
+         
+        0
+         
+        1
+         
+        Rate This
+
+     41   Comment by Garf — July 13, 2012 @ 12:13 am
+
+            Which number will you exclude in that case? (It might not be in the range)
+             
+            0
+             
+            0
+             
+            Rate This
+
+           42 Comment by gagika — July 13, 2012 @ 12:17 am
+
+            When c_1 = 1, then the number might be out of the range.
+             
+            1
+             
+            0
+             
+            Rate This
+
+            43 Comment by gagika — July 13, 2012 @ 12:25 am
+
+        I’m not sure I totally understand your argument, but your argument lead me towards the following:
+
+        Let B_i be the subset of \{0,\cdots,N-1\} with 0 as the i^{th} digit in their binary expansion (note we’re leaving out one member). Let B ask B_1,\cdots,B_k in that order, and let b_i be 0 if A says yes to B_i and 1 else. Then let s_i be the number with binary expansion a_0a_1\cdots a_i a_{i+1}' \cdots a_k' where a_j'=1-a_j. Now ask \{s_0\},\cdots,\{s_k\} in order.
+
+        Suppose A answers at least once that x\neq s_i, and pick the first such instance of this. Then if x=s_i, A will have lied for the last k+1 questions, ie B_i,B_{i+1},\cdots,B_k,\{s_0\},\cdots,\{s_i\}. So x cannot be s_i and we have the required win.
+
+        On the other hand, if A always says that x=s_i for any i, then if x was the one member we didn’t manipulate, A lied k+1 times (all \{s_i\} questions). So if A says that x=s_i for all i, then the one member we didn’t manipulate is actually not x, so we’ve discarded one member, and B wins.
+         
+        0
+         
+        0
+         
+        Rate This
+
+     44   Comment by Kreiser — July 13, 2012 @ 2:40 am
+
+            I think you are missing one case:
+
+            “Suppose A answers at least once that x \neq s_i , and pick the first such instance of this. Then if x = s_i, A will have lied for the last questions, ie . So cannot be and we have the required win.”
+
+            What if A answers at least once that x \neq s_i , and x \neq s_i which mean that he didn’t lie.
+             
+            0
+             
+            0
+             
+            Rate This
+
+          45  Comment by Gagik Amirkhanyan — July 13, 2012 @ 3:32 am
+
+                Then $x\neq s_i$ and you guess everything except for $s_i$.
+                 
+                0
+                 
+                0
+                 
+                Rate This
+
+             46   Comment by Kreiser — July 13, 2012 @ 5:57 am
+
+        When you ask “if b_i = 1, …”, do you mean “if b_i is the only digit that has the value 1, … “?
+         
+        0
+         
+        0
+         
+        Rate This
+
+       47 Comment by abellong — July 13, 2012 @ 8:23 am
+
+        Example for k=1 to see if I am following your logic.
+
+        Change indexing to be (0,N-1) to make indexing easier. Let N=3 and k=1 and n=2.
+
+        Ask about 2, if all No x is either 0 or 1 and done.
+        If we get a yes then ask about 1. If A answers yes then we have had two yes in a row and x is in (1,2) and we are done.
+        If we got a no then , A has answered 2 : yes, 1: no. The only possibilities compatible with this set of answers are, 2:true,1:false or 2: false,1: false. Therefore we can eliminate 1 and x is either 0 or 2.
+
+        It would be nice if someone writes out yhe same for N=5 and k=2.
+         
+        0
+         
+        0
+         
+        Rate This
+
+     48  Comment by Jeff — July 13, 2012 @ 2:40 pm
+
+    [...] 4 has started. It is based on question 3 of the IMO. The research thread is here. There is a wiki here. Like this:LikeBe the first to like [...]
+     
+    0
+     
+    0
+     
+    Rate This
+
+    49 Pingback by Mini-polymath 4 « Euclidean Ramsey Theory — July 13, 2012 @ 12:06 am
+
+    Isn’t there something missing on the statement of the question? If I am B, then all my questions are of the form “is x \in { j }?”, where j = 1, 2, …, N, and I repeat each question k + 1 times. Since A cannot lie k+1 consecutive times, and x must be in { x }, the answer must be ‘yes’ after at most (k+1) x questions.
+     
+    0
+     
+    3
+     
+    Rate This
+
+   50 Comment by dd — July 13, 2012 @ 12:11 am
+
+        Sorry! It is not as simple as I first thought because if there are mixed answers for a set, I may still not know which answer is correct. For instance, A can alternate between yes and no and no matter how many times I ask the same question I still can’t figure out which way is the truth.
+         
+        0
+         
+        0
+         
+        Rate This
+
+      51  Comment by dd — July 13, 2012 @ 12:15 am
+
+    For part 2, we can again assume
+    N = n + 1, n = 1.99^k (the ceiling).
+     
+    0
+     
+    0
+     
+    Rate This
+
+   52 Comment by gagika — July 13, 2012 @ 12:38 am
+
+        And A shouldn’t give B the possibility to exclude any number from the range [1, N]
+         
+        0
+         
+        0
+         
+        Rate This
+
+     53   Comment by gagika — July 13, 2012 @ 12:42 am
+
+        For each number in the rang [1, N] at least one of every k + 1 answers in a row should be satisfied, so the number can be valid value for x.
+        A’s goal is to choose YES’s and NO’s in such a way
+         
+        0
+         
+        0
+         
+        Rate This
+
+       54 Comment by Gagik Amirkhanyan — July 13, 2012 @ 4:34 am
+
+    Cant B just keep asking questions with singleton {y} for 2k consecutive times and then B can be sure of whether y=x??
+     
+    0
+     
+    2
+     
+    Rate This
+
+   55 Comment by Ronny — July 13, 2012 @ 1:35 am
+
+        No. This has been discussed at least 2 other times- please read the thread before contributing. The standard counterexample is what happens if the answers are half yes and half no.
+         
+        0
+         
+        0
+         
+        Rate This
+
+     56   Comment by Kreiser — July 13, 2012 @ 2:00 am
+
+    I think it goes along the following lines: suppose that you have built a sequence of k + 1 nested sets X_0 <= X_1 <= … <= X_k such that the answers of A indicate that none of the X_i contain the element x. Then we have confirmation that x is not an element of X_0. Indeed, if that was the case, then x must be in X_1, X_2, …, X_k and all the answers A gave were lies.
+
+    Try to build such a sequence where each nested set is at least half as large as the parent.
+     
+    0
+     
+    0
+     
+    Rate This
+
+   57 Comment by dd — July 13, 2012 @ 2:18 am
+
+        [SPOILER: don't read if you don't want to see the solution]
+
+        To get the first part of the problem, proceed as follows. Suppose that we have determined that a set of t >= 0 values from [N] *cannot* be the element x. Then let us eliminate one more element provided that N – t >= 2^k + 1.
+
+        In this case, pick an arbitrary element y that you are still unsure could be x. Ask A repeatedly whether y is x. If the answer you get k + 1 times is NO, then it is the truth and you eliminated y as well. Otherwise, at some point A answers YES, which is equivalent to saying that there is a set X_k of size N – t – 1 >= 2^k which does not contain x. Now ask A about an arbitrary half of X_k if it contains x and this will determine a set X_{k – 1} \subset X_k with at least 2^{k – 1} elements that does contain x (according to A’s answer). Iterating yields a non-empty set X_0 for which you know x is not in X_0 (see the parent comment). You have thus eliminated |X_0| >= 1 elements from the set of candidates for x.
+
+        Doing this until N – t = 2^k yields the set with the desired property.
+         
+        0
+         
+        0
+         
+        Rate This
+
+      58  Comment by dd — July 13, 2012 @ 2:36 am
+
+    I think Comment 16 (and also Comment 21, which seems to be basically the same argument) has resolved the first part of the problem. Looks like the second part is still almost untouched, though (except for the short observation in Comment 19)…
+     
+    0
+     
+    0
+     
+    Rate This
+
+    59 Comment by Terence Tao — July 13, 2012 @ 4:08 am
+
+    You can try to solve both parts for the “truth”, which is harder but doable (and was the original problem). I won’t (yet) mention the optimal n so as to not risk giving any hints for part (b)
+     
+    0
+     
+    0
+     
+    Rate This
+
+   60 Comment by Ralph Furmaniak — July 13, 2012 @ 5:45 am
+
+        What do you mean by truth? In the above we have solved for the set containing X.
+         
+        0
+         
+        0
+         
+        Rate This
+
+       61 Comment by jbergmanster — July 13, 2012 @ 2:45 pm
+
+            I think Ralph is using “the truth” to refer to the true threshold for n (i.e. the least n for which B has a winning strategy, or equivalently the first n for which A no longer has a counterstrategy). The problem as stated places this threshold below or equal 2^n, and above or equal (1.99)^n for sufficiently large n, but is presumably somewhere in between. (e.g. it might be something like \binom{n}{\lfloor n/2\rfloor}, which sometimes shows up as a threshold in some other extremal combinatorics problems.)
+             
+            0
+             
+            0
+             
+            Rate This
+
+           62 Comment by Terence Tao — July 13, 2012 @ 4:07 pm
+
+    Some ideas for the second part:
+    1) Could it work for any n < 2^k? In that case, (b) follows from the fact that there exists an integer n \in [1.99^k , 2^k) for sufficiently large k.
+    2) If above is true, we would only need to show that for N = 2^k, n < N, B does not have a winning strategy.
+     
+    0
+     
+    0
+     
+    Rate This
+
+   63 Comment by Olli — July 13, 2012 @ 7:12 am
+
+        Possibly some variant of greedy algorithm would work?
+         
+        0
+         
+        0
+         
+        Rate This
+
+       64 Comment by Olli — July 13, 2012 @ 7:33 am
+
+        So should k=6 work with ceil(1.99^6) = 63 and N=64. Or do we need a larger gap of order k?
+         
+        0
+         
+        0
+         
+        Rate This
+
+      65  Comment by jbergmanster — July 13, 2012 @ 3:01 pm
+
+    I guess we can abate the rules of game namely that instead of A not being able to lie for k+1 moves in a row, he is able to lie for k+1 moves in a row, but he will lose at the end of the game if he ever does that.
+
+    Looks like one possible approach might be probabilistic deduction. Something like A’s strategy is random and B’s strategy is deterministic.
+
+    Can we say that it is enough that B asks only finitely many questions by some reasoning (something similar than some problems needs to be checked only in finitely many cases by compactness argument)?
+     
+    0
+     
+    0
+     
+    Rate This
+
+   66  Comment by Jaakko — July 13, 2012 @ 8:51 am
+
+    [...] Edit: As of Friday morning (7/13/2012), the problem still has not been completely solved, so there’s time to chime in on the discussion thread! [...]
+     
+    0
+     
+    0
+     
+    Rate This
+
+  67  Pingback by Polymath project: social problem-solving | Civil Statistician — July 13, 2012 @ 1:21 pm
+
+    Some observations:
+    we can again assume
+    N = n + 1, n = 1.99^k (the ceiling).
+
+    The strategy for A will be for each value of x in the range [1, N] to have at least 1 correct answer in each k + 1 consecutive queries.
+    Each time A picks to answer he can choose YES or NO in such a way that at least for half of the numbers in {1, 2, … N} it will be true.
+     
+    2
+     
+    0
+     
+    Rate This
+
+   68 Comment by Anonymous — July 13, 2012 @ 3:25 pm
+
+    It would be enough to show that there is a set S of size M where 1.99^k + 1 <= M <= 2^k such that for all choices of x in S, A could give the same answers to all of B's questions while still maintaining the required conditions. In this case it would seem that B cannot be done if n = M – 1.
+     
+    0
+     
+    0
+     
+    Rate This
+
+   69 Comment by Nirman — July 13, 2012 @ 3:26 pm
+
+    To approach part 2, I guess the easiest idea is to try to give a strategy for A. From part 1, we learned that we can as well start with a set of size N = n+1, and B tries to exclude some element i in {1,…,n+1} as being x.
+
+    Thus, B will specify sets S_1, S_2, … and A needs to answer in turn. At any point in time, A wants that *each* value i in {1,…,n+1} is still a possibility for x. Thus, suppose we answered the previous questions S_1,…,S_k somehow, and we are given S_{k+1} which we want to answer. We now build a 0/1-matrix, with columns 1,…,k and rows 1,…,n+1. For each (i,j) we put a 1 in an entry in case we answered question j (about S_j) such that x = i is a possibility.
+
+    Thus, this looks now like the following game: B provides a subset of the columns S. A then add a column to the matrix, where either exactly the entries in S have a 1, or exactly the entries in {1,..,n+1} \ S have a 1. If at any point in time some row has only zeros in the last k+1 columns, A loses.
+
+    We can now try to give strategies which can handle as many rows as possible (even if it is way less than 2^k).
+     
+    3
+     
+    0
+     
+    Rate This
+
+  70  Comment by Anonymous — July 13, 2012 @ 3:29 pm
+
+    This is a very vague idea but part b) reminds me of the sort of problems I encountered in an Information Theory class a long while ago. It was especially common to prove inequalities in the limit like that in part b). So perhaps the problem could be phrased in Information Theoretic language? e.g. “The answers provided by A can only reduce the entropy so much”.
+
+    But as I hardly remember the details of information theory I may be way off base…
+     
+    1
+     
+    0
+     
+    Rate This
+
+    71 Comment by letmeitellyou — July 13, 2012 @ 3:57 pm
+
+    Since the ratio of 1.99^n to 2^n becomes arbitrarily small the following method could possibly work. Start with any example that doesn’t work and find a way to double it one more lie any number of times. Then eventually it will be between 1.99^n and 2^n and it will be the desired counterexample. This has the virtue of allowing us to look at small counterexamples first. Do we have a list of counterexamples when the number is less than 2*n and A wins? Perhaps that would be useful. I would be interested in what information A can hide and how.
+     
+    0
+     
+    0
+     
+    Rate This
+
+   72 Comment by kristalcantwell — July 13, 2012 @ 5:29 pm
+
+        So let’s take a concrete factor. Suppose you face half the number of questions which guarantee success – is there a strategy that works? The number 2 seems to be intimately connected to the problem, which suggests that half might be a good proportion to try.
+         
+        0
+         
+        0
+         
+        Rate This
+
+      73  Comment by Mark Bennet — July 13, 2012 @ 6:38 pm
+
+    In part (b), we need to develop a strategy for 1st player. If I were him, I would take X=n+1, and do not choose x at all. Then, I would try to answer in such a way, that after all n+1 possible choices of x there is no k+1 succesive lies. If this can be done, after any n-element guess of 2nd player, I can claim that x is the n+1-st element. This is a beat cheting, but it works :)
+     
+    0
+     
+    0
+     
+    Rate This
+
+    74 Comment by Anonymous — July 13, 2012 @ 5:36 pm
+
+        I mean N=n+1
+         
+        0
+         
+        0
+         
+        Rate This
+
+     75   Comment by Anonymous — July 13, 2012 @ 5:38 pm
+
+    Now, let a(i), i=1,…,n+1 be a number of succesive lies up to now, if x=i. Then, at every step, I have vector (a(1),a(2),…,a(n+1)). For example, with n+1=4 I start with vector (0,0,0,0). After question about set {1,2,3}, I can say “yes” to get vector (0,0,0,1) or “no” to get (1,1,1,0). Obviously, better to say “yes”. In this case, if next question is about set {1,4}, I can say “yes” to get (0,1,1,0) or “no” to get (1,0,0,2). In any case I can round some numbers to 0 but increase other numbers by 1. I loose if I get k+1 somewhere.
+     
+    1
+     
+    0
+     
+    Rate This
+
+   76  Comment by Bogdan — July 13, 2012 @ 5:49 pm
+
+        In case there are two entries which contain k, we also already lost, because we can’t guarantee neither of them goes to k+1. Analogously, if there are 4 entries which contain k-1, or if there are 8 entries containing k-2.
+         
+        0
+         
+        0
+         
+        Rate This
+
+     77   Comment by Anonymous — July 13, 2012 @ 6:38 pm
+
+    We can think of the game in the following way.
+    B asks questions about the sets
+    S_1, S_2, … , S_k,…
+
+    And A should make a choice (by answering YES or NO) of S_i or its complement in each time and we will get
+    D_1, D_2, … D_k, …
+    where D_i is either S_i or the complement of S_i (A has the option to choose)
+    A wants to do in a way that for each m, all the numbers from the range [1, N] appear at least once in the sequence
+    D_m, D_{m+1}, … D_{m+k}
+     
+    0
+     
+    0
+     
+    Rate This
+
+    78 Comment by Gagik Amirkhanyan — July 13, 2012 @ 7:23 pm
+
+        We use a greedy approach to choose D_i
+        We choose
+        D_1 = S_1 if | S_1 | > N/2 t, otherwise D_1 = Compliment(S_1).
+        To pick D_2 we can see whether S_2 or complement (S_2) covers at least 1/2 portion of [1, N] \ D_1
+        We pick D_{i+1} such that it covers at least 1/2 portion of D\(D_1 u D_2 … u D_i}.
+        We can claim that in at least p = log_2 N steps D_1 u D_2 … u D_p = [1, N]
+        Where p = k log_2 (1.99).
+        It means that for each of the numbers [1, N] we A gave at least one correct answer in the first p steps.
+
+        Because p > k / 2, it will not imply part b), probably some modifications are needed.
+         
+        0
+         
+        0
+         
+        Rate This
+
+      79  Comment by Gagik Amirkhanyan — July 13, 2012 @ 8:04 pm
+
+    Since this is a cooperative effort, let me blurt out some weaker result for part 2 which may be refined to give the desired result.
+    Suppose that we just want to prove that for n < 2^{k/2} there is no winning strategy for B.
+
+    We let N = n + 1.
+
+    Before describing A's strategy let us look at what B must do. After a finite number of rounds, B provides a set of n elements which he claims must contain x. In other words, B is stating that precisely one element y from [1, N] should not be x. What we have to show is that all of A's answer are compatible with y being equal to x. More precisely, we have to show that for x = y, the sequence of answers do not contain any k+1 consecutive lies.
+
+    A's answers are encoded as a sequence of sets S_0, S_1, \dots, S_M such that each answer is of the form x does not belong to S_i. If the set given by B on the ith round is T_i then the set S_i is either T_i or its complement. A's choice for S_0 is arbitrary (say S_0 = T_0). For i = 1,\dots, k/2, pick S_i \in \{T_i, T_i^c\} such that |intersection of S_0, S_1, …, S_i| <= |intersection of S_0, …, S_{i – 1}| / 2. In particular, the intersection of S_0, \dots, S_{k/2} is empty. After this, A starts fresh with the S_{k/2 + 1} = T_{k/2 + 1} and repeats the same process again.
+
+    Now for any choice of y that B selects, all the answers of A are compatible, since for any k + 1 consecutive sets in the sequence S_0, \dots, S_M there must be a subsequence of k/2 + 1 terms S_j, S_{j + 1}, \dots, S_{j + k/2} such that their common intersection is empty. In particular, y cannot be in all of the sets S_j, \dots, S_{j + k/2}, so one of those answers was truthful.
+     
+    1
+     
+    0
+     
+    Rate This
+
+   80  Comment by dd — July 13, 2012 @ 7:39 pm
+
+    The game can be re-formulated in an equivalent one: The player A chooses an element x from the set S (with |S|=N ) and the player B asks the sequence of questions. The j -th question consists of B choosing a set D_j\subseteq S and player A selecting a set P_j\in\left\{ D_j,D_j^C\right\} . For every j\geq 1 the following relation holds: x\in P_j\cup P_{j+1}\cup\cdots \cup P_{j+k}. The player B wins if after a finite number of steps he can choose a set X with | X|\leq n such that x\in X
+
+    a) It suffices to prove that if N\geq 2^k+1 then the player B can determine a set S^{\prime}\subseteq S with |S^{\prime}|\leq N-1 such that x\in S^{\prime} . Assume that N\geq 2^n+1 . In the first move B selects any set D_1\subseteq S such that |D_1|\geq 2^{k-1} and |D_1^C|\geq 2^{k-1} . After receiving the set P_1 from A , B makes the second move. The player B selects a set D_2\subseteq S such that | D_2\cap P_1^C|\geq 2^{k-2} and |D_2^C\cap P_1^C|\geq 2^{k-2} . The player B continues this way: in the move j he/she chooses a set D_j such that | D_j\cap P_j^C|\geq 2^{k-j} and |D_j^C\cap P_j^C|\geq 2^{k-j} . In this way the player B has obtained the sets P_1 , P_2 , \dots , P_k such that \left(P_1\cup \cdots \cup P_k\right)^C\geq 1 . Then B chooses the set D_{k+1} to be a singleton containing any element of P_1\cup\cdots \cup P_k . There are two cases now: 1^{\circ} The player A selects P_{k+1}=D_{k+1}^C . Then B can take S^{\prime}=S\setminus D_{k+1} and the statement is proved. 2^{\circ} The player A selects P_{k+1}=D_{k+1} . Now the player B repeats the previous procedure on the set S_1=S\setminus D_{k+1} to obtain the sequence of sets P_{k+2} , P_{k+3} , \dots , P_{2k+1} . The following inequality holds:
+
+    \left|S_1\setminus \left(P_{k+2}\cdots P_{2k+1}\right)\right|\geq 1, since |S_1|\geq 2^k .
+
+    However, now we have
+
+    \left|\left(P_{k+1}\cup P_{k+2}\cup\cdots\cup P_{2k+1}\right)^C\right|\geq 1,
+
+    and we may take S^{\prime}=P_{k+1}\cup \cdots \cup P_{2k+1} .
+
+    (b) Let p and q be two positive integers such that 1.99\lneq p\lneq q\lneq 2 . Let us choose k_0 such that
+
+    \left(\frac{p}{q}\right)^{k_0}\leq 2\cdot \left(1-\frac{q}2\right)\quad\quad\quad\mbox{and}\quad\quad\quad p^k-1.99^k\gneq 1.
+
+    We will prove that for every k\geq k_0 if |S|\in\left(1.99^k, p^k\right) then there is a strategy for the player A to select sets P_1 , P_2 , \dots (based on sets D_1 , D_2 , \dots provided by B ) such that for each j the following relation holds:
+
+    P_j\cup P_{j+1}\cup\cdots\cup P_{j+k}=S.
+
+    Assuming that S=\{1,2,\dots, N\} , the player A will maintain the following sequence of N -tuples: (\mathbf{x})_{j=0}^{\infty}=\left(x_1^j, x_2^j, \dots, x_N^j\right) . Initially we set x_1^0=x_2^0=\cdots =x_N^0=1 . After the set P_j is selected then we define \mathbf x^{j+1} based on \mathbf x^j as follows:
+
+    x_i^{j+1}=\left\{\begin{array}{rl} 1,&\mbox{ if } i\in P_i\\ q\cdot x_i^j, &\mbox{ if } i\not\in P_i. \end{array}\right.
+
+    The player A can keep B from winning if x_i^j\leq q^k for each pair (i,j) . For a sequence \mathbf x , let us define T(\mathbf x)=\sum_{i=1}^N x_i . It suffices for player A to make sure that T\left(\mathbf x^j\right)\leq q^{k} for each j . Notice that T\left(\mathbf x^0\right)=N\leq p^k \lneq q^k . We will now prove that given \mathbf x^j such that T\left(\mathbf x^j\right)\leq q^k , and a set D_{j+1} the player A can choose P_{j+1}\in\left\{D_{j+1},D_{j+1}^C\right\} such that T\left(\mathbf x^{j+1}\right)\leq q^k . Let \mathbf y be the sequence that would be obtained if P_{j+1}=D_{j+1} , and let \mathbf z be the sequence that would be obtained if P_{j+1}=D_{j+1}^C . Then we have
+
+    T\left(\mathbf y\right)=\sum_{i\in D_{j+1}^C} qx_i^j+\left|D_{j+1}\right| T\left(\mathbf z\right)=\sum_{i\in D_{j+1}} qx_i^j+\left|D_{j+1}^C\right|.
+
+    Summing up the previous two equalities gives:
+
+    T\left(\mathbf y\right)+T\left(\mathbf z\right)= q\cdot T\left(\mathbf x^j\right)+ N\leq q^{k+1}+ p^k, \mbox{ hence} \min\left\{T\left(\mathbf y\right),T\left(\mathbf z\right)\right\}\leq \frac{q}2\cdot q^k+\frac{p^k}2\leq q^k,
+
+    because of our choice of k_0.
+     
+    1
+     
+    1
+     
+    Rate This
+
+  81  Comment by akash chayan — July 13, 2012 @ 7:53 pm
+
+        I think it’s correct solution, just in the definition of x_i^{j+1} should be P_i instead of S. [Corrected, -T.]
+         
+        0
+         
+        0
+         
+        Rate This
+
+       82 Comment by Gagik Amirkhanyan — July 13, 2012 @ 8:14 pm
+
+    Dear all,
+
+    As this thread is becoming quite full, I am opening a fresh thread at http://polymathprojects.org/2012/07/13/minipolymath4-project-second-research-thread/ to refocus the discussion. I’ll leave this thread open for responses to existing comments here, but if you could put all new comments in the new thread, that would be great. (Now would also be a good time to resummarise some of the observations made in this thread onto the fresh thread, to make it easier to catch up.)
+     
+    0
+     
+    0
+     
+    Rate This
+
+    83 Comment by Terence Tao — July 13, 2012 @ 7:56 pm
+
+    [...] the previous research thread is getting quite lengthy (and is mostly full of attacks on the first part of the problem, which is [...]
+     
+    0
+     
+    0
+     
+    Rate This
+
+   84  Pingback by Minipolymath4 project, second research thread « The polymath blog — July 13, 2012 @ 8:04 pm
+
+    [...] (Rubinstein would say that this is true of most real-life applications of game theory as well.) Try your hand, or look at the comments, which surely have spoilers by now as it has been up for about a day: [...]
+     
+    0
+     
+    0
+     
+    Rate This
+
+   85  Pingback by Game Theory at the Polymath Project « The Leisure of the Theory Class — July 13, 2012 @ 8:47 pm
+
+    Reblogged this on Wikipedia Afficianado and commented:
+    IMO is the Mecca of young mathematicians battling out in this divine field of which I am in oblivion of until now. Whenever I try and study mathematics it is with a notion of solving a problem and that problem is hard enough for veterans to try but what I have come to know from those who do “Research” is that they don’t do it to solve the problem but to firstly understand it well and secondly to find why is that problem tough than what it seems to be. Terence Tao as you all know is a known child prodigy and inculcated abilities to solve problems involving numbers at a very young age. He id the youngest even to have received a fields medal. This Re-Blogged post concerns a question which appeared in this year’s IMO (International Mathematical Olympiad in case you are not familiar with what it is) and a good thread to discuss what comes to your mind while approaching it.
+     
+    0
+     
+    0
+     
+    Rate This
+
+   86  Comment by prateekchandrajha — July 30, 2012 @ 10:58 pm
+
+    1) for the case of k consecutive responses one of which is true:
+    we supoose k = 0, so all answers are true, so we can know the exact number x, so n = 1 ≥ 2 ^ 0
+
+    I now propose a case that will help me in my demonstration:
+    2) For k+2 consecutive responses which one is true and one is false :
+    we assume that k = 0, so two consecutive responses contiennt true and the other false, so thanks to our given 1 ≤ x ≤ N, making this series of questions:
+    * X = 0?
+    * 1 ≤ x ≤ N?
+    * X = 1?
+    * 1 ≤ x ≤ N?
+    .
+    .
+    .
+    I will know the exact number x, so in this case n = 1 ≥ 2^0
+
+    *** Now assume that for k+1 consecutive responses which one is true n must be n ≥ 2 ^ k
+    one must demonstrate that responses to k+2 n in this case must be n ≥ 2 ^ (k +1)
+
+    and *** k+2 consecutive responses which one is true and one is false n must be n ≥ 2 ^ k
+    we must show that for k+3 consecutive responses in this case n must be n ≥ 2 ^ (k +1)
+
+    1 *) where k+2 consecutive responses which one is true can be divided into two cases:
+    — K 2 answers are true then n ≥ 1
+    — K 2 answers contiennet true and another false must therefore n ≥ 2^k
+    so it is sufficient to write n ≥ 2^(k+1)
+
+    2 *) where k+3 consecutive responses which one is true and the other must be false can be divided into two cases:
+    — K+2 answers are wrong and one seulle is true: in this case the placement of the true answer is the same after each k+2 answers, so to see her placement just ask the same question k+2 times and the correct answer will be different among the answers … and how we can know the exact number x, so n ≥ 1
+    — K+3 answers contain at least two answers true and one false: this case is a special case of the general case (k+2 consecutive responses of which is true), so n ≥ 2 ^ (k +1)
+
+    It’s finished
+     
+    0
+     
+    0
+     
+    Rate This
+
+  87  Comment by Anonymous — August 22, 2012 @ 3:27 pm
+
+
+RSS feed for comments on this post.
+
+    Recent Comments
+    	Anonymous on Two polymath (of a sort) propo…
+    	KM Tu (@kmtutu) on Polymath8 – A Success…
+    	Sylvain JULIEN on Two polymath (of a sort) propo…
+    	Sylvain JULIEN on Two polymath (of a sort) propo…
+    	hadimaster65555 on Polymath9: P=NP? (The Discreti…
+    	sadaoui hamza on Polymath proposal: bounded gap…
+    	colinwytan on Two polymath (of a sort) propo…
+    	Bojin Zheng on Polymath9: P=NP? (The Discreti…
+    	Коллективный разум в… on Polymath proposal: bounded gap…
+    	vznvzn on Two polymath (of a sort) propo…
+    RSS Polymath Wiki – most recent changes
+        An error has occurred; the feed is probably down. Try again later.
+    Blogroll
+        Gil Kalai
+        Michael Nielsen
+        Terence Tao
+        The Polymath Wiki
+        Tim Gowers
+    Projects
+        Mini-polymath1: IMO Q6 2009
+        Polymath1: Density Hales-Jewett
+        Polymath2: Embedded c_0 or l^p in explicit Banach spaces
+        Polymath4: Finding primes deterministically
+        Polymath5: Erdos discrepancy problem
+    Proposals
+        Boshernitzan's problem
+        Cap sets
+        Other proposals
+        Polynomial Hirsch conjecture
+        Proposals on Wordpress
+    Pages
+        About
+        General discussion
+        General polymath rules
+        How to use LaTeX in comments
+    Categories
+        discussion (6)
+        finding primes (8)
+        hot spots (7)
+        Improving Roth bounds (1)
+        mock-up (2)
+        news (5)
+        planning (5)
+        polymath proposals (18)
+        research (13)
+    Search for:
+    Top Posts
+        Polymath proposal: bounded gaps between primes
+        Minipolymath4 project: IMO 2012 Q3
+        Minipolymath3 project: 2011 IMO
+        Polymath9: P=NP? (The Discretized Borel Determinacy Approach)
+        General polymath rules
+        Polymath8 - A Success !
+        About
+        Minipolymath4 project, second research thread
+        Polymath proposal (Tim Gowers): Randomized Parallel Sorting Algorithm
+        Polymath proposal: The Hot Spots Conjecture for Acute Triangles
+
+The Rubric Theme. Blog at WordPress.com.
+Skip to toolbar
+
+    WordPress.com	
+    Current blog avatar The polymath blog	
+    Follow	
+    Reblog	
+
+    alisonpease	
+    New Post	
+
+Log Out
+
+
+The polymath blog
+July 13, 2012
+Minipolymath4 project, second research thread
+Filed under: polymath proposals — Terence Tao @ 7:49 pm
+
+It’s been almost 24 hours since the mini-polymath4 project was opened in order to collaboratively solve Q3 from the 2012 IMO.  In that time, the first part of the question was solved, but the second part remains open.  In other words, it remains to show that for any sufficiently large k and any N, there is some n \geq (1.99)^k such that the second player B in the liar’s guessing game cannot force a victory no matter how many questions he asks.
+
+As the previous research thread is getting quite lengthy (and is mostly full of attacks on the first part of the problem, which is now solved), I am rolling over to a fresh thread (as is the standard practice with the polymath projects).  Now would be a good time to summarise some of the observations from the previous thread which are still relevant here.  For instance, here are some relevant statements made in previous comments:
+
+    Without loss of generality we may take N=n+1; if B can’t win this case, then he certainly can’t win for any larger value of N (since A could simply restrict his number x to a number up to n+1), and if B can win in this case (i.e. he can eliminate one of the n+1 possibilities) he can also perform elimination for any larger value of N by partitioning the possible answers into n+1 disjoint sets and running the N=n+1 strategy, and then one can iterate one’s way down to N=n+1.
+    In order to show that B cannot force a win, one needs to show that for any possible sequence of questions B asks in the N=n+1 case, it is possible to construct a set of responses by A in which none of the n+1 possibilities of x are eliminated, thus each x belongs to at least one of each block of k+1 consecutive sets that A’s answers would indicate.
+    It may be useful to look at small examples, e.g. can one show that B cannot win when k=1, n=1? Or when k=2, n=3?
+
+It seems that some of the readers of this blog have already obtained a solution to this problem from other sources, or from working separately on the problem, so I would ask that they refrain from giving spoilers for this question until at least one solution has been arrived at collaboratively.
+
+Also, participants are encouraged to edit the wiki as appropriate with new developments and ideas, and participate in the discussion thread for any meta-discussion about the polymath project.
+Related
+
+Minipolymath4 project: IMO 2012 Q3In "research"
+
+(Research thread II) Deterministic way to find primesIn "finding primes"
+
+(Research Thread III) Determinstic way to find primesIn "finding primes"
+Comments (21)	
+21 Comments
+
+    If k=1 n=1 then then A chooses N=2 x=1. To the question is x=1 or x=2 A answers yes unless the previous question was the same and he answered yes to it then he answers no. To the question is x in the set containing both 1 or 2 A answers yes. Then he never tells 2 lies in a row and never breaks symmetry between 1 or 2 so it will be impossible for B to figure out which A has chosen.
+     
+    4
+     
+    0
+     
+    Rate This
+
+   88  Comment by kristalcantwell — July 13, 2012 @ 8:15 pm
+
+    Just to rephrase the question, as it takes me a long time to figure out how B can extract information if A just acts randomly:
+
+    Suppose that B askes a series of questions, and A answers a sequence of Yes and No. We call A’s answers a “dubious” sequence, call it Ans, indexed by i.
+
+    For every element x in {1,2,…,N}, we can construct a “truthful” sequence, call it Truth(x), i being the index, where A always give the correct answer given that x is the secret number.
+
+    Now B can exclude the possibility of y being secret number, if Truth(y) and Ans differ in k+1 consecutive terms (*). Phrasing in this way, A’s lying strategy would be looking at the set of all truthful sequences given B’s question, and choose Yes or No to prevent scenario (*) from happening.
+     
+    1
+     
+    0
+     
+    Rate This
+
+  89   Comment by prospector — July 14, 2012 @ 3:22 am
+
+        Comparing sequences Ans and Truth(y), we could define Lie(y)_ j := total number of consecutive lies by A so far, after answering j-th question, after last telling truth. If Ans_i = Truth(x)_i, Lie(x)_i clears to zero; otherwise, Lie(x) increments by 1. When Lie(y) reaches k+1, we know that y is not the secret number; and this is what A wants to avoid.
+
+        The trick here for B is to force the sequence Lie(x) for some x, to increase k+1 times consecutively, regardless of how A answer. At first, all Lie(x) are 0.
+
+        If B asks if “x is in S?”, A has two choices:
+
+        1. Say “Yes”. Then Lie(x) clears to zero for x in S, and Lie(x) increments by 1 for x not in S.
+        2. Say “No”. Then Lie(x) increments by 1 for x in S, and Lie(x) becomes 0 for x not in S.
+
+        In this way, we can think of the following games, similar to Conway’s checkers:
+
+        There are N checkers on horizontal line y=0. Each time, B can partition these checkers into two set, X and Y, then A can either move all the checkers in X vertically up by 1 and put all checkers in Y back to line y = 0, or move all the checkers in Y vertically up by 1 and all checkers in X back to the line y = 0. (Here Lie(x) is the vertical distance of checker x to the line y = 0.) Show that no checkers can reach line y = k+1.
+         
+        2
+         
+        0
+         
+        Rate This
+
+     90   Comment by Prospector — July 14, 2012 @ 6:31 am
+
+    For k = 2, n = 2 (which, like (k, n) = (1, 1), has k = 1/2 * 2^n)), one can proceed as follows (here N = 3; say the numbers are 1, 2, and 3):
+    I) Whatever B guesses on turn 1, A answers as if A’s number was ACTUALLY 1.
+    II) Whatever B guesses on turn 2, A answers as if A’s number was ACTUALLY 2.
+    III) Whatever B guesses on turn 3, A answers as if A’s number was ACTUALLY 3.
+
+    And so A goes on: pretending his number is actually 1 on turns congruent to 1 mod 3, 2 on turns that are 2 mod 3, and 3 that are 3 mod 3… no matter what A chooses, A’s statement is automatically true at least every third move..
+     
+    1
+     
+    0
+     
+    Rate This
+
+  91  Comment by William Meyerson — July 14, 2012 @ 9:41 pm
+
+    Here’s some tentative ideas; they need cleaned up.
+
+    Formulation 1
+
+    Let Q = \{1,2,\ldots,n+1\}, and let G be a sequence of k+1 non-empty subsets of Q. Player A needs to find a cover C of Q, with |C| \leq k+1, consisting of member(s) of G and their complement(s) with respect to Q.
+
+    If such a strategy exists for k = m, it exists for all k \geq m as well, since Player A could simply use the k = m strategy.
+
+    If Player B asks q_a followed by q_b, q_a \supseteq q_b and |b - a| \leq k, then Player A can complete the cover by negating the answer for q_a.
+
+    If the set of possible x indicated over the past k turns by Player A is A and q_n \subseteq A, then the cover can be completed by answering “No”. If the set of not-yet indicated x over the past k turns by Player A is A and q_n \supseteq A, then the cover can be completed by answering “Yes”.
+
+    Formulation 2
+
+    There are 2^{n+1}-1 questions. Assign each question a unique, n+1-digit binary string b_i, where the i-th digit of b_i equals 1 if it is asked, and accumulate the indicated answers in a bit string A. Player A can either bitwise or b_i and A, or bitwise or \lnot b_i and A. The goal is to have A = 11111... after k+1 turns.
+
+    1.99^k \leq n \leq 2^k, so an equivalent condition is k\ \log_2(1.99) \leq \log_2(n) \leq k. Therefore Player A must indicate half or more of the remaining digits with each question. This can be done by selecting either b_i or \lnot b_i, depending on whichever indicates more new bits. b_i or its negation will indicate at least half of the remaining bits, since any b_i and its negation indicate all of the bits. This can be done in at most k+1 operations: given \log_2(n) \leq k, \lceil \log_2(n+1) \rceil \leq k+1. For at least one of those operations, telling the truth will be the optimal choice. If it were not, Player B would have to ask k+1 unique questions such that x was always in the smaller group of bits. This would mean that only x was not indicated on question k+1. However, x would still be indicated in that answer. If x \in b_{k+1}, then a “yes” answer indicates x, and if not, a “no” answer indicates x as well.
+     
+    0
+     
+    0
+     
+    Rate This
+
+ 92   Comment by ajk — July 14, 2012 @ 10:06 pm
+
+    One can have a look at Chapter 15 in Alon & Spencer’s book `Probabilistic Methods’…
+     
+    0
+     
+    0
+     
+    Rate This
+
+  93  Comment by lowai — July 14, 2012 @ 10:10 pm
+
+        eh, it’s Chapter 15 in the third edition … specficially sectin 15.3 (tenure game)
+         
+        0
+         
+        0
+         
+        Rate This
+
+      94  Comment by lowai — July 15, 2012 @ 2:10 pm
+
+    An easy observation that probably a lot of people have made: A can win if k=n=1. A chooses either 1 or 2, at random, and then alternates answering between answering the question as if the correct answer were 1 and answering as if it were 2. There is no way for B to know which half of A’s answers are truthful. More generally, A can win whenever k=n.
+
+    What is the current fastest growing function f(k) so that A can win for n=f(k)?
+     
+    0
+     
+    0
+     
+    Rate This
+
+   95 Comment by David Speyer — July 15, 2012 @ 12:14 am
+
+    Here is how I am currently thinking about the problem. I’m using the reduction where N=n+1.
+
+    Let’s say that player A “suggests” i whenever she gives an answer which is consistent with i being the secret number.
+
+    For any $i$, if $A$ ever goes k+1 turns without suggesting i, then $A$ loses. If i was the secret number, then A has broken the rules. If not, then B can eliminate i and win.
+
+    If there are ever 2 numbers, say i and j, which have not been suggested for k turns, then B wins. This is because B can ask a question which makes it impossible for A to suggest both i and j, then win as in the previous paragraph.
+
+    Similarly, $A$ loses if there are ever 4 numbers which have not been suggested in k-1 turns, or 8 which have not been suggested in k-2, etc.
+
+    Turning this logic around, in a winning strategy for A, the number of digits which have NOT been suggested for the last k-r rounds should grow exponentially in r.
+
+    This hasn’t suggested a strategy to me yet, but my understanding is that the rules of a Polymath are that I should toss all my ideas out there.
+     
+    0
+     
+    0
+     
+    Rate This
+
+96    Comment by David Speyer — July 15, 2012 @ 12:23 am
+
+        Here is a template for a strategy for A. At any moment in time, let a_i be the number of values which have not been suggested for the last i rounds. So the number of elements which just got suggested is a_0, and we want to make sure that a_{k+1} is always 0. Choose some positive real weights w_0, w_1, …, w_k. A always makes the choice (whether to lie or tell the truth) which minimizes \sum a_i w_i. At the moment, I don’t have specific weights to nominate, but my intuition is that w_i should grow just a little slower than 2^i.
+         
+        0
+         
+        0
+         
+        Rate This
+
+       97 Comment by David Speyer — July 15, 2012 @ 12:47 am
+
+        For example, suppose that we take w_i = 1.99^i. Let the current score be B. Let B_1 be the part of the score which comes from numbers that would be suggested by answering YES and let B_2 be the part of the score which comes from numbers that would be suggested by answering NO. So B=B_1 + B_2. Let n_1 be the number of numbers contributing to B_1, and likewise for n_2. So n+1=n_1+n_2, and both are positive.
+
+        Without loss of generality, say B_1 > B_2. So A answers YES, and the new score is
+        n_1 + (1.99) B_2 < n + (1.99/2) B.
+
+        So the score can never get above the fixed point of this recursion, at B = 200 n. So there will never be an element which goes unsuggested for k+1 steps where 1.99^{k+1} = 200 n. So this is a winning strategy for n = 1.99^{k+1}/200.
+
+        I think I just solved the problem. I'm going to sit back and think about this for a bit.
+         
+        0
+         
+        0
+         
+        Rate This
+
+       98 Comment by David Speyer — July 15, 2012 @ 1:00 am
+
+            You want to solve it for n greater than 1.99^k. That can be fixed by changing w_i to 1.999^i. If your method works I think you can change the exponent in your w_i and get an answer greater than any exponent less than 2for large enough k.
+             
+            0
+             
+            0
+             
+            Rate This
+
+          99  Comment by kristalcantwell — July 15, 2012 @ 1:27 am
+
+    Here is an attempt to write up my solution neatly from scratch. My apologies if either (1) I have stolen people’s fun by getting to the answer too fast or (2) I have wasted people’s time with a faulty solution.
+
+    Let \epsilon>0 be a small parameter. Our strategy will allow Alice to deny Bob a certain win with n+1 = \epsilon (2-\epsilon)^{k+1}. By first choosing \epsilon sufficiently small (say 10^{-3}) and then k sufficiently large, this is greater than 1.99^k.
+
+    With n=\epsilon (2-\epsilon)^{k+1}/2, Alice starts by choosing a random integer from 1 to n+1. Alice then never considers this value again. Since her answers will in no way depend what number she has chosen, they can reveal no information about that number, and therefore can provide Bob with no aid. What we must see is that Alice can do this while obeying the rule that she must tell the truth once every k+1 rounds.
+
+    We say that Alice “suggests i” if she gives an answer which would be truthful, if her number were i. We will describe a strategy so that Alice suggests every number at least once every k+1 turns. In particular, she suggests the true number once every k+1 rounds, and thus obeys the rules.
+
+    Let a_r be the number of values which have not been suggested in the last r rounds. Alice’s strategy will be to always answer so as to minimize the quantity \sum a_r (2-\epsilon)^r. We’ll call this quantity the score. At the beginning of the game, the score is n+1. Suppose that the score is B. The next question is asked about set S. Let n_1 = |S| and n_2 = (n+1) - |S|. Let B_1 be the part of the score contributed by numbers in S, and let B_2 be the part contributed by numbers not in S. Then the new score is \min((2- \epsilon) B_1 + n_2, (2- \epsilon) B_2 + n_1). Since ( (2- \epsilon) B_1 + n_2 ) + ((2- \epsilon) B_2 + n_1) = (2-\epsilon) B + n + 1, Alice can definitely arrange for the new score to be \leq ((2-\epsilon) B + n+1)/2 = (1-\epsilon/2) B + (n+1)/2. So, inductively, the score never gets higher than (n+1)/\epsilon. In particular, there is no contribution from r such that (2-\epsilon)^r > (n+1)/\epsilon. Since we chose (k,n) such that n+1 = \epsilon (2-\epsilon)^{k+1}, that means that we have succeeded in suggesting every value at least once every k+1 steps, as desired. QED
+
+    “Just the place for a Snark! I have said it twice: That alone should encourage the crew.
+    Just the place for a Snark! I have said it thrice: What I tell you three times is true.”
+     
+    5
+     
+    3
+     
+    Rate This
+
+   100 Comment by David Speyer — July 15, 2012 @ 1:23 am
+
+        As there were comments about the threshold of n.
+        Is it the most one can get using this method?
+        For example could the weights (2 – \epsilon)^r be modified to handle the case when n = 2^k / k^m
+         
+        0
+         
+        0
+         
+        Rate This
+
+     101   Comment by Gagik Amirkhanyan — July 15, 2012 @ 4:33 am
+
+    We need to prove given any set of questions offered by questioner B, A can always make an answer such that at least (2-epsilon)^k numbers satisfy the rules for that answer.
+
+    So we just need to construct a strategy for A such that eventually (2-epsilon)^k possibilities remain.
+     
+    0
+     
+    0
+     
+    Rate This
+
+   102  Comment by Anonymous — July 15, 2012 @ 4:03 am
+
+        Is there anything wrong with the following proof that the bound of part 1 can be improved to
+        n>2^(k-1) +1?
+        Preamble
+        For a set U of 2^m possible integers, define strategy X for B as follows. First ask m “binary digit” questions. A will then have claimed x is in m subsets which exclude just 1 of the 2^m possible integers – call this integer X(U). B then asks if x is X(U).
+        Proof
+        Suppose n = 2^(k-1) +2.
+        As noted by others, A can be “forced” to say x is a particular element. Consider this to be the first question and answer.
+        Let U be 2^(k-1) of the integers, excluding the particular element and one other. Apply strategy X for questions 2 to k+1. (For questions 2 to k arbitrarily add just one of the two excluded elements to S.)
+        As before, A is “forced” to say x is X(U) in answer to question k+1. Now consider questions k and k+1 to be the first two questions. At this point, A has claimed that x is in a set containing 2^(k-2) + 1 integers and has claimed that x is X(U). Let V and W be two sets, each containing 2^(k-2) integers, but excluding X(U), such that V is part of the first claimed set and W is not.
+        Now, for questions 3 to k+1, apply strategy X to set W. Questions 3 to k can be used to similarly and simultaneously analyse set V. (For questions 3 to k arbitrarily add just one of the two elements not in V or W to S.)
+        As before, A is “forced” to say x is X(W) in answer to question k+1. Furthermore, if B asks if x is X(V) for question k+2, then A is “forced” to say yes.
+        Now, once again, consider questions k and k+1 to be the first two questions. Let Z be the 2^(k-1) integers excluding X(V) and X(W) and apply strategy X to Z. Before the final question is asked B knows that x is not X(Z).
+         
+        0
+         
+        1
+         
+        Rate This
+
+      103  Comment by Stan Dolan — July 16, 2012 @ 2:17 pm
+
+            For N = 2 if N = 2^k, thus sharpening the assertion of the IMO problem to n >= 2^k – 1 for k >= 2. For k = 2 it seems to be similar to Jerzy Wojciechowski’s in #10. Combining this with William Meyerson’s #3 we thus know that n = 2^k – 1 = 3 is the minimum for k = 2. From other posts we have n = 1 for k = 0 and n = 2 for k = 1. The question of the minimum for arbitrary k appears to be still open.
+             
+            0
+             
+            0
+             
+            Rate This
+
+           104 Comment by Kai Neergård — October 7, 2012 @ 1:21 pm
+
+                The interface apparently does’nt like “less than” and “larger than” signs and so skipped a large part of my post. Since I see no way of editing or withdrawing posts, I thus have to submit it once more. Please neglect that above:
+
+                For N less than 2^k, binary digit questions don’t necessarily enforce a yes. The x that is excluded may be larger than N. In that case B learns nothing from asking if it is the true x. Thus the “particular element” of Stan Dolan’s argument may not exist.
+
+                The argument seems to work for k not less than 2 if N = 2^k, thus sharpening the assertion of the IMO problem to n not less than 2^k – 1 for k not less than 2. For k = 2 it seems to be similar to Jerzy Wojciechowski’s in #10. Combining this with William Meyerson’s #3 we then know that n = 2^k – 1 = 3 is the minimum for k = 2. From other posts we have n = 1 for k = 0 and n = 2 for k = 1. The question of the minimum for arbitrary k appears to be still open.
+                 
+                0
+                 
+                0
+                 
+                Rate This
+
+             105   Comment by Kai Neergård — October 7, 2012 @ 1:37 pm
+
+    Let’s look at the case when k=2 and n=3. It seems to me that B can win. Let N=4. Let B ask the first question with S={1,2} and the second with S={1,3}. Then there is exactly one number m in {1,2,3,4} so that when x=m the first two answers of A are false. Then B asks the third question with S={m}, A must answer yes, since otherwise m could be eliminated. Let w be such that the second question was false when x=m or when x=w. Let B ask the fourth question with S={w}. Again A must answer yes, since otherwise w could be eliminated. If {1,2,3,4}-{m,w}={y,z} then let B ask the fifth question with S={z}. If A answers yes, then y can be eliminated, if A answers no, then z can be eliminated.
+     
+    4
+     
+    0
+     
+    Rate This
+
+  106  Comment by Jerzy Wojciechowski — July 19, 2012 @ 9:53 pm
+
+    Looks like I’m very late to the party. I wanted to point out a different solution to part 1 that has ties to the De Brujin sequence cycle, though admittedly it’s more complicated. I typed up a little bit here: http://evan-qcs.blogspot.com/2012/07/liars-guessing-game-and-de-brujin.html
+
+    The idea still uses the fact that within k questions, we can get player 1 to lie about one of the numbers k times (for instance, the strategy of asking about what the i-th bit is does that trick), and then… how to uses subsequent questions to force player 1 into fewer and fewer options for answer choices.
+
+    In short, for this strategy, player 2 follows the de Brujin sequence for bitstrings of length k (B(2,k)) to figure out when he should include a particular number i in the question. For the i-th number, start from the i-th element of the de Brujin sequence, if we see a 1, include it in the set for the question. What this does is that for every contiguous block of questions, and no matter what player 1 answers, he will lie about a particular number $k$ times, and this number rotates. In effect, if we examine all possible strategies for player 1 for this set of questions, the player must follow 1 of 2^k possible sequences.
+
+    Then, use the last number (2^k+1) as a trap: throw in this number and follow a particular possible answer sequence for k questions. On the k+1-th question, place the last number to oppose that answer sequence, then player 1 is trapped if he followed that answer sequence. Set these traps one bunch at a time, until all of them are gone. It takes a lot longer than the short answer proposed already, but it seems fun. Should have occurred to me to set the trap up at the beginning. Oh well…
+     
+    0
+     
+    0
+     
+    Rate This
+
+  107  Comment by Evan — July 26, 2012 @ 2:01 am
+
+    I realize that this polymath project has ended about a month ago. I’m writing this comment only for “future reference” if someone is interested in this IMO problem and wants to figure out a better estimate (asymtotics) for the smallest n (as a function of k) that makes the game a win for B.
+
+    First I state an equivalent formulation of the problem in terms of existence of certain binary trees. This provides another way to look at the problem and has the advantage that this problem has been studied in relation to unsatisfiable CNF Boolean formulas and the complexity of certain restrictions of SAT, so I can quote results (including one that is partially mine – sorry).
+
+    A finite rooted binary tree is called a (k, d)-tree if
+    (i) every non-leaf vertex has exactly two children,
+    (ii) each leaf has distance at least k from the root, and
+    (iii) every node u of the tree has at most d leaves that are both descendants of u and in distance at most k from u.
+
+    We call leaves satisfying (iii) with respect to a vertex u “visible from u”. We call them left- or right-visible depending on whether they are descendants of the left or right child of u (the two children of u are distinguished arbitrarily).
+
+    CLAIM: The liar’s guessing game for k and n is a win for B if and only if there exists a (k+1,n+1)-tree.
+
+    PROOF: Let’s assume first that B wins and fix a winning strategy for N=n+1. We assume he stops asking questions as soon as he can eliminate one of the n+1 possibilities for the unknown x, that is when A’s last k+1 answers are all false for some possible choice for x. Let us build the game tree from B’s strategy: the root corresponds to the initial position before the first question was answered, its two children correspond to the two possible answers, etc. Leaves correspond to the end of the game when the last k+1 answers eliminate a possible value for x. Let us label each leaf with one of the eliminated values.
+
+    For the “only if” part we prove that this is a (k+1,n+1)-tree. Parts (i) and (ii) of the definition are satisfied trivially. Part (iii) follows from the observation that all leaves visible from a vertex u of the tree must have different labels. Indeed, otherwise there would be a vertex u’ of the tree with a left-visible and a right-visible leaf having the same label x. But this would mean that both answers to the question B asks at the position u’ rules out x – a contradiction.
+
+    For the reverse direction (the “if” part) we use the observation that B wins if and only if he wins with N=n+1. Assume there is a (k+1,n+1)-tree. Label the leaves with values 1<=x<=n+1 such that all leaves visible from the same vertex have distinct labels. This is possible, one can label the leaves in increasing order of their level (distance from the root). Condition (iii) makes sure we have always enough labels to choose from. Now here is a strategy for B to eliminate one of the n+1 possible values for x: Start at the root. At a vertex u ask if there is a leaf labeled x left-visible from u. If the answer is YES move to right child, for NO answer move to the left child. When B arrives to a leaf it can rule out its label and hence wins the game.
+
+    QED
+
+    And now the references: Let f(k) denote the largest d with no (k,d)-tree (referred to as f_2 in [GST]). Then f(k)=\Theta(2^k/k) by [G] and f(k)=(2/e+O(k^{-1/2}))2^k/k by [GST]. The lower bound can easily be derived from Lovasz's local lemma, the upper bound is based on an elaborate construction. Because of the shift by 1 this means that the smallest n such that B wins the liar's guessing game for k and n is (4/e+O(k^{-1/2}))2^k/k.
+
+    [G] H. Gebauer, Disproof of the Neighborhood Conjecture with Implications to SAT, Combinatorica, to appear, Proc. 17th Annual European Symposium on Algorithms (ESA 2009), LNCS 5757, 764–775. http://www.inf.ethz.ch/personal/gebauerh/NeighborhoodConjecture.pdf
+
+    [GST] H. Gebauer, T. Szabo, G. Tardos, The local lemma is tight for SAT, Proc. of the 21st Annual ACM-SIAM Symposium on Discrete Algorithms (SODA 2011). http://www.renyi.hu/~tardos/SAT.pdf
+     
+    4
+     
+    0
+     
+    Rate This
+
+   108 Comment by Gabor Tardos — August 14, 2012 @ 8:55 pm
+
+
+RSS feed for comments on this post.
+
+    Recent Comments
+    	Anonymous on Two polymath (of a sort) propo…
+    	KM Tu (@kmtutu) on Polymath8 – A Success…
+    	Sylvain JULIEN on Two polymath (of a sort) propo…
+    	Sylvain JULIEN on Two polymath (of a sort) propo…
+    	hadimaster65555 on Polymath9: P=NP? (The Discreti…
+    	sadaoui hamza on Polymath proposal: bounded gap…
+    	colinwytan on Two polymath (of a sort) propo…
+    	Bojin Zheng on Polymath9: P=NP? (The Discreti…
+    	Коллективный разум в… on Polymath proposal: bounded gap…
+    	vznvzn on Two polymath (of a sort) propo…
+    RSS Polymath Wiki – most recent changes
+        An error has occurred; the feed is probably down. Try again later.
+    Blogroll
+        Gil Kalai
+        Michael Nielsen
+        Terence Tao
+        The Polymath Wiki
+        Tim Gowers
+    Projects
+        Mini-polymath1: IMO Q6 2009
+        Polymath1: Density Hales-Jewett
+        Polymath2: Embedded c_0 or l^p in explicit Banach spaces
+        Polymath4: Finding primes deterministically
+        Polymath5: Erdos discrepancy problem
+    Proposals
+        Boshernitzan's problem
+        Cap sets
+        Other proposals
+        Polynomial Hirsch conjecture
+        Proposals on Wordpress
+    Pages
+        About
+        General discussion
+        General polymath rules
+        How to use LaTeX in comments
+    Categories
+        discussion (6)
+        finding primes (8)
+        hot spots (7)
+        Improving Roth bounds (1)
+        mock-up (2)
+        news (5)
+        planning (5)
+        polymath proposals (18)
+        research (13)
+    Search for:
+    Top Posts
+        Polymath proposal: bounded gaps between primes
+        Minipolymath4 project: IMO 2012 Q3
+        Minipolymath3 project: 2011 IMO
+        Polymath9: P=NP? (The Discretized Borel Determinacy Approach)
+        General polymath rules
+        Polymath8 - A Success !
+        About
+        Minipolymath4 project, second research thread
+        Polymath proposal (Tim Gowers): Randomized Parallel Sorting Algorithm
+        Polymath proposal: The Hot Spots Conjecture for Acute Triangles
+
+The Rubric Theme. Blog at WordPress.com.
+Skip to toolbar
+
+    WordPress.com	
+    Current blog avatar The polymath blog	
+    Follow	
+    Reblog	
+
+    alisonpease	
+    New Post	
+
+Log Out
+
